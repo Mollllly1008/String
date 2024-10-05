@@ -14,7 +14,8 @@ public:
 	String(const String &Str);						// 拷贝构造函数
 	String & operator=(const String &Str);			// 必须为成员函数
 	virtual ~String();								// 析构函数（虚函数）
-
+        friend ostream & operator<<(ostream &out, const String &Str);
+	friend istream & operator>>(istream &in, String &Str);
 private:
 	char* str;
 };
