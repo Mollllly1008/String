@@ -16,6 +16,16 @@ public:
 	virtual ~String();								// 析构函数（虚函数）
         friend ostream & operator<<(ostream &out, const String &Str);
 	friend istream & operator>>(istream &in, String &Str);
+        char & operator[](int index);					// 方括号（下标）运算符。引用返回可作左值、右值
+	friend String operator+(const String &str1, const String &Str2); // 友元函数，字符串拼接
+	String & operator+=(const String &Str);			// 字符串拼接及赋值
+	// 重载关系运算
+	friend bool operator==(const String &Str1, const String &Str2);
+	friend bool operator!=(const String &Str1, const String &Str2);
+	friend bool operator> (const String &Str1, const String &Str2);
+	friend bool operator>=(const String &Str1, const String &Str2);
+	friend bool operator< (const String &Str1, const String &Str2);
+	friend bool operator<=(const String &Str1, const String &Str2);
 private:
 	char* str;
 };
