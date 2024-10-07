@@ -80,3 +80,54 @@ istream& operator>>(istream& in, String& Str)
 	Str = str;				// 利用转换构造函数（自动转换），再利用赋值运算
 	return in;
 }
+
+char & String::operator[](int index)		// 重载方括号运算符
+{
+	return str[index];
+}
+
+String operator+(const String &Str1, const String &Str2)
+{
+	String temp;
+	temp.str = new char[strlen(Str1.str)+strlen(Str2.str)+1];
+										// 自动扩展资源空间
+	strcpy(temp.str, Str1.str);
+	strcat(temp.str, Str2.str);
+	return temp;
+}
+
+String & String::operator+=(const String &Str)
+{
+	*this = *this + Str;
+	return *this;	
+}
+
+bool operator==(const String &Str1, const String &Str2)
+{
+	return strcmp(Str1.str, Str2.str)==0;
+}
+
+bool operator!=(const String &Str1, const String &Str2)
+{
+	return strcmp(Str1.str, Str2.str)!=0;
+}
+
+bool operator> (const String &Str1, const String &Str2)
+{
+	return strcmp(Str1.str, Str2.str) > 0;
+}
+
+bool operator>=(const String &Str1, const String &Str2)
+{
+	return strcmp(Str1.str, Str2.str) >= 0;
+}
+
+bool operator< (const String &Str1, const String &Str2)
+{
+	return strcmp(Str1.str, Str2.str) < 0;
+}
+
+bool operator<=(const String &Str1, const String &Str2)
+{
+	return strcmp(Str1.str, Str2.str) <= 0;
+}
